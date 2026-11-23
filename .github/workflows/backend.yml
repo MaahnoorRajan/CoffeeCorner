@@ -1,0 +1,33 @@
+name: Backend smoke tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    services:
+      db:
+        image: mariadb:10.11
+        env:
+          MARIADB_DATABASE: coffee_corner
+          MARIADB_USER: coffee_app
+          MARIADB_PASSWORD: ci-test-only
+          MARIADB_ROOT_PASSWORD: ci-root-only
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=5s --health-timeout=5s --health-retries=20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Import schema and check PHP files
+        run: |
+          php -r 'exit(extension_loaded("pdo_mysql") ? 0 : 1);'
+          MYSQL_PWD=ci-test-only mysql -h 127.0.0.1 -u coffee_app coffee_corner < database/schema.sql
+          find public includes config tests -name '*.php' -exec php -l {} \; | tee /tmp/php-lint
+          ! grep -q 'Errors parsing' /tmp/php-lint
+      - name: Exercise the live HTTP endpoints
+        run: |
+          echo "<?php return ['password' => 'ci-test-only'];" > config/database.local.php
+          php -S 127.0.0.1:8000 -t public >/tmp/cafe-server.log 2>&1 &
+          curl --retry 10 --retry-connrefused --retry-delay 1 --fail http://127.0.0.1:8000/
+          php tests/smoke.php

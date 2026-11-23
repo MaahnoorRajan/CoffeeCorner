@@ -1,0 +1,5 @@
+body { margin: auto; max-width: 54rem; padding: 1rem; font: 1rem/1.55 system-ui,sans-serif; color: #34271e; background: #fffaf2; }
+header, footer, article { padding: 1rem 0; border-bottom: 1px solid #d9cbbc; }
+main { min-height: 55vh; } a { color: #24563e; } label { display: block; margin: .75rem 0; }
+input,select,button { padding: .55rem; font: inherit; max-width: 100%; box-sizing: border-box; }
+button { background: #24563e; color: white; border: 0; cursor: pointer; }
