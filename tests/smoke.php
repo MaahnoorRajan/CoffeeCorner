@@ -23,6 +23,6 @@ checkPage('drink.php?id=1', 200, 'Preview price');
 checkPage('drink.php?id=4', 404, 'unavailable');
 checkPage('review.php', 405, 'Use the drink form');
 $order = ['id'=>'1', 'quantity'=>'2', 'size'=>'medium', 'milk'=>'oat', 'syrup'=>'vanilla', 'total'=>'1'];
-checkPage('review.php', 200, 'Total: 390 KGS', $order);
+checkPage('review.php', 200, 'Total: 490 KGS', $order);
 checkPage('review.php', 422, 'whole number', array_replace($order,['quantity'=>'6']));
 checkPage('review.php', 422, 'valid milk', array_replace($order,['milk'=>'unknown']));

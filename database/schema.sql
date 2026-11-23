@@ -53,8 +53,8 @@ CREATE TABLE reservations (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO menu_items (name, category, description, base_price_kgs, available) VALUES
-('Cappuccino','Coffee','Espresso, steamed milk and foam.',140,1),
-('Latte','Coffee','Espresso with a generous pour of milk.',150,1),
+('Cappuccino','Coffee','Espresso, steamed milk and foam.',190,1),
+('Latte','Coffee','Espresso with a generous pour of milk.',230,1),
 ('Masala Chai','Tea','Spiced black tea brewed with milk.',100,1),
 ('Mocha','Coffee','Espresso and chocolate.',165,0);
 

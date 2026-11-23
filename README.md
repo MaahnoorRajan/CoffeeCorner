@@ -4,7 +4,10 @@
 Coffee Corner is a three-person course project for a fictional café. Customers browse drinks, choose options and preview prices in Kyrgyz som. The planned full workflow adds pay-at-pickup orders, a staff preparation queue and fixed-hour table bookings.
 
 ## Try the first milestone
-Open the menu, search for Cappuccino, choose medium, oat milk and vanilla, and set quantity to two. PHP retrieves the base price from the database and returns **390 KGS**: 2 × (140 + 20 + 25 + 10). A preview does not save an order. The menu excludes unavailable drinks.
+Open the menu, search for Cappuccino, choose medium, oat milk and vanilla, and set quantity to two. PHP retrieves the base price from the database and returns **490 KGS**: 2 × (190 + 20 + 25 + 10). A preview does not save an order. The menu excludes unavailable drinks.
+
+## Price reference
+The [Kulikov Sydykova café menu](https://menu-coffee.kulikov.com/sydykova/products) lists cappuccino from **190 KGS** (270, 400 and 450 ml options) and latte from **230 KGS** (400 and 450 ml options). Coffee Corner uses those starting prices as benchmarks. Our size labels, option surcharges, Masala Chai and Mocha prices are project examples. Existing installations using the original seed prices can apply `database/update_reference_prices.sql` once with a database maintenance account. Fresh installations only need schema.sql.
 
 ## Run locally
 1. Clone the repository. Install PHP 8.1+ with `pdo_mysql` and MySQL 8.0.16+ or MariaDB 10.4+. XAMPP with a compatible PHP version works. Start the database service.
