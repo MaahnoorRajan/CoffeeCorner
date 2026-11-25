@@ -14,7 +14,13 @@ Browse the searchable menu, customise drinks and preview prices in Kyrgyz som. S
    ```
 
    If the account already exists, run the GRANT only and keep its existing password. Copy **config/database.example.php** to **config/database.local.php** and set the corresponding credentials. The override is ignored by Git.
-4. From the repository root run **php -S 127.0.0.1:8000 -t public**. On Windows with XAMPP you can use **C:\\xampp\\php\\php.exe** in place of php. Open http://127.0.0.1:8000. For Apache, set the web document root to public/.
+4. From the repository root, run `php -S 127.0.0.1:8000 -t public`. If you installed XAMPP in its default location on Windows, you can run this command in PowerShell:
+
+   ```powershell
+   & 'C:\xampp\php\php.exe' -S 127.0.0.1:8000 -t public
+   ```
+
+   Open http://127.0.0.1:8000. For Apache, set the web document root to public/.
 5. Register customer and staff demo accounts using separate email addresses. From the administrator SQL console, grant the intended staff account its role, then sign in again:
 
    ```sql
