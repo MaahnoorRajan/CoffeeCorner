@@ -28,3 +28,6 @@ tests/smoke.php checks public navigation, search, unavailable products, server-c
 
 ## Team presentation
 Each member can present one path end to end: menu management, account and order processing, or table reservations. Use the actual Git history when describing contributions.
+
+## Recorded outcome
+On 25 November 2026 the PHP lint, MariaDB schema import, 10 public HTTP checks, multi-user workflow suite and screenshot capture passed on [GitHub Actions run 45589809921](https://github.com/MaahnoorRajan/CoffeeCorner/actions/runs/45589809921). See the [nine captured screens](screenshots/), including the [mobile menu](screenshots/mobile-menu.png), [confirmation preview](screenshots/review.png), and [staff desk](screenshots/staff.png).
