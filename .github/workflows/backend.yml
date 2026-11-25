@@ -31,3 +31,25 @@ jobs:
           php -S 127.0.0.1:8000 -t public >/tmp/cafe-server.log 2>&1 &
           curl --retry 10 --retry-connrefused --retry-delay 1 --fail http://127.0.0.1:8000/
           php tests/smoke.php
+          MYSQL_PWD=ci-test-only python3 tests/workflows.py
+      - name: Capture demo pages
+        run: |
+          php -S 127.0.0.1:8001 -t public >/tmp/cafe-capture.log 2>&1 &
+          curl --retry 10 --retry-connrefused --retry-delay 1 --fail http://127.0.0.1:8001/
+          mkdir -p screenshots
+          for page in index menu 'drink.php?id=1' login; do
+            case "$page" in
+              index|menu|login) url="$page.php";;
+              drink*) url="$page";;
+              *) continue;;
+            esac
+            google-chrome --headless --disable-gpu --no-sandbox --hide-scrollbars --window-size=1280,960 --screenshot="screenshots/${page%%.*}.png" "http://127.0.0.1:8001/$url"
+          done
+          for page in staff activity reserve review; do
+            google-chrome --headless --disable-gpu --no-sandbox --hide-scrollbars --window-size=1280,960 --screenshot="screenshots/$page.png" "file:///tmp/coffee-corner-pages/$page.html"
+          done
+          google-chrome --headless --disable-gpu --no-sandbox --hide-scrollbars --window-size=390,844 --screenshot="screenshots/mobile-menu.png" http://127.0.0.1:8001/menu.php
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coffee-corner-screenshots
+          path: screenshots/

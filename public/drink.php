@@ -4,7 +4,7 @@ $item = drink($_GET['id'] ?? null);
 require __DIR__ . '/../includes/header.php';
 ?>
 <h1><?= h($item['name']) ?></h1><p><?= h($item['description']) ?> Base price: <?= (int)$item['base_price_kgs'] ?> KGS.</p>
-<form action="review.php" method="post">
+<form action="review.php" method="post"><?= token_field() ?>
 <input type="hidden" name="id" value="<?= (int)$item['id'] ?>">
 <?php foreach (OPTIONS as $field => $values): ?>
 <label><?= ucfirst($field) ?><select name="<?= $field ?>">

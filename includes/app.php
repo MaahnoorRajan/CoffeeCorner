@@ -70,3 +70,5 @@ function quote(int $basePrice, array $input): array {
     }
     return ['unit' => $unit, 'quantity' => $quantity, 'total' => $unit * $quantity];
 }
+
+require_once __DIR__ . '/session.php';

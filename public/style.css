@@ -1,5 +1,24 @@
-body { margin: auto; max-width: 54rem; padding: 1rem; font: 1rem/1.55 system-ui,sans-serif; color: #34271e; background: #fffaf2; }
-header, footer, article { padding: 1rem 0; border-bottom: 1px solid #d9cbbc; }
-main { min-height: 55vh; } a { color: #24563e; } label { display: block; margin: .75rem 0; }
-input,select,button { padding: .55rem; font: inherit; max-width: 100%; box-sizing: border-box; }
-button { background: #24563e; color: white; border: 0; cursor: pointer; }
+*{box-sizing:border-box}
+:root{color-scheme:light;--ink:#302b26;--paper:#faf7f1;--line:#dcd5c8;--green:#224939;--muted:#625c54}
+body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.55 "Segoe UI",Arial,sans-serif}
+header{background:#fffdf8;border-bottom:1px solid var(--line)}
+nav,main,footer{width:min(100% - 2.5rem,64rem);margin:auto}
+nav{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;padding:1rem 0}
+nav a{text-decoration:none} .brand,h1,h2,h3{font-family:Georgia,serif} .brand{margin-right:auto;font-size:1.65rem;font-weight:bold;color:var(--ink)}.brand span{color:#a34e2b}
+a{color:var(--green);text-underline-offset:.22em} a:hover{text-decoration:underline}
+main{min-height:68vh;padding:clamp(1.4rem,5vw,3.6rem) 0}h1,h2,h3{line-height:1.14;margin:0 0 .65em}
+h1{font-size:clamp(2.5rem,6vw,4.5rem);letter-spacing:-.045em}h2{font-size:1.65rem;margin-top:1.4rem}h3{font-size:1.3rem}
+p{max-width:65ch;color:var(--muted)}article,aside,.panel{border:1px solid var(--line);border-radius:1rem;background:#fffdf8;padding:1.3rem;margin:1rem 0}
+article h2,aside h2{margin-top:0}article p{margin:.4rem 0}.grid,.hero{display:grid;gap:1rem}.grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr))}.grid article{margin:0}
+.hero{grid-template-columns:1.4fr 1fr;align-items:center;padding:2rem 0}.hero aside{background:var(--green);color:white;padding:2rem}.hero aside p,.hero aside a{color:#f1eada}
+form{display:grid;gap:.8rem;justify-items:start;max-width:38rem;margin:1rem 0}nav form{margin:0}
+label{display:grid;gap:.3rem;font-weight:600;max-width:100%;width:100%}label:has(input[type=checkbox]){display:block}
+input,select,button,.button{font:inherit;border-radius:.5rem;padding:.56rem .85rem}
+input,select{min-width:0;max-width:100%;border:1px solid #968e82;background:white;color:var(--ink)}
+button,.button{border:0;background:var(--green);color:white;cursor:pointer;text-decoration:none;display:inline-block}
+.quiet{background:transparent;color:var(--green);padding:.35rem .6rem;border:1px solid var(--line);border-radius:.5rem}
+.filters{max-width:none;display:flex;align-items:end;flex-wrap:wrap}.filters label{width:auto}
+.status{float:right;background:#e4eee6;color:var(--green);border-radius:1rem;padding:.2rem .7rem}
+.notice,[role=alert]{background:#e8efe5;padding:.8rem 1rem;border-left:3px solid var(--green)}
+footer{border-top:1px solid var(--line);color:var(--muted);padding:1.3rem 0} :focus-visible{outline:3px solid #b96129;outline-offset:3px}
+@media(max-width:640px){.hero{grid-template-columns:1fr;padding:0}.brand{flex-basis:100%}nav{gap:.75rem}.filters label{width:100%}.filters input,.filters select{width:100%}}

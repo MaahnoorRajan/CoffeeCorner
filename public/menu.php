@@ -17,11 +17,11 @@ $items = $stmt->fetchAll();
 require __DIR__ . '/../includes/header.php';
 ?>
 <h1>Menu</h1>
-<form method="get"><label>Drink name <input name="q" value="<?= h($q) ?>"></label>
+<form method="get" class="filters"><label>Drink name <input name="q" value="<?= h($q) ?>"></label>
 <label>Category <select name="category">
 <?php foreach (['' => 'All', 'Coffee' => 'Coffee', 'Tea' => 'Tea'] as $value => $label): ?>
 <option value="<?= h($value) ?>" <?= $category === $value ? 'selected' : '' ?>><?= h($label) ?></option>
 <?php endforeach ?></select></label><button>Search</button></form>
 <?php if (!$items): ?><p>No drinks match. <a href="menu.php">Clear filters</a></p><?php endif ?>
-<?php foreach ($items as $item): ?><article><h2><a href="drink.php?id=<?= (int)$item['id'] ?>"><?= h($item['name']) ?></a></h2><p><?= h($item['description']) ?></p><p>From <?= (int)$item['base_price_kgs'] ?> KGS</p></article><?php endforeach ?>
+<div class="grid"><?php foreach ($items as $item): ?><article><h2><a href="drink.php?id=<?= (int)$item['id'] ?>"><?= h($item['name']) ?></a></h2><p><?= h($item['description']) ?></p><p>From <?= (int)$item['base_price_kgs'] ?> KGS</p></article><?php endforeach ?></div>
 <?php require __DIR__ . '/../includes/footer.php'; ?>
