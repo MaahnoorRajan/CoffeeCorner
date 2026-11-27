@@ -21,6 +21,9 @@ Browse the searchable menu, customise drinks and preview prices in Kyrgyz som. S
    UPDATE users SET role='staff' WHERE email='your-staff-account@example.com';
    ```
 
+### Start the Windows demo
+Once the local database is running, open PowerShell in the repository root and run `./scripts/start-local.ps1`. If PHP is outside PATH, pass the executable explicitly (for XAMPP, `./scripts/start-local.ps1 -Php C:\xampp\php\php.exe`). The launcher serves only the public folder on the loopback interface. Open http://127.0.0.1:8000/menu.php. Use Ctrl+C in that terminal to stop the web server.
+
 ## Upgrading the first milestone
 The core schema is compatible. Existing installations should keep their data, grant the app the write permissions above and apply **database/update_reference_prices.sql** if still using the original seed prices. Existing passwords and configuration belong only on your machine.
 
