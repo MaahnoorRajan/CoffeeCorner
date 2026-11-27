@@ -31,3 +31,6 @@ Each member can present one path end to end: menu management, account and order 
 
 ## Recorded outcome
 On 25 November 2026 the PHP lint, MariaDB schema import, 10 public HTTP checks, multi-user workflow suite and screenshot capture passed on [GitHub Actions run 45589809921](https://github.com/MaahnoorRajan/CoffeeCorner/actions/runs/45589809921). See the [nine captured screens](screenshots/), including the [mobile menu](screenshots/mobile-menu.png), [confirmation preview](screenshots/review.png), and [staff desk](screenshots/staff.png).
+
+### Local demonstration on 28 November 2026
+On the Windows demo machine, PHP 8.4.28 served the OneDrive checkout on loopback port 8000 with MariaDB 13.1.2 on loopback port 3307. All ten public smoke checks passed. A customer registered, signed in and confirmed two medium oat cappuccinos with vanilla for 490 KGS. A separately signed-in staff user advanced the order from placed through preparing to ready. The customer's activity page displayed Ready for that same receipt.
